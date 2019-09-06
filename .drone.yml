@@ -1,0 +1,15 @@
+  
+workspace:
+base: /test
+path: toolkit
+  
+pipeline:
+  asda:
+    image: fpfis/drone-plugin-asda
+    group: build
+    owner: ""
+    target: /test/toolkit/dump.sql
+    website: "efsa-reference"
+    secrets:
+      - source: asda_url
+        target: asda_url
