@@ -16,4 +16,4 @@ pipeline:
   asda:
     image: ubuntu
     commands:
-      - for i in $(seq 1 20);do echo -n ".";sleep 1;done
+      - for i in $(seq 1 20);do echo "$i";sleep 1;done
