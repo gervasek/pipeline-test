@@ -17,4 +17,4 @@ pipeline:
     image: ubuntu
     commands:
       - echo "sleep"
-      - sleep 60
+      - sleep 10
