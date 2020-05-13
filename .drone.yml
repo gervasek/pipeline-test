@@ -13,7 +13,7 @@ workspace:
   path: toolkit
   
 pipeline:
-  asda:
+  test-20-sec:
     image: ubuntu
     commands:
       - for i in $(seq 1 20);do echo "$i";sleep 1;done
