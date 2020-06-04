@@ -14,7 +14,7 @@ workspace:
   
 pipeline:
   test-dc-database-operations:
-    image: fpfis/drone-plugin-deploy
+    image: registry.fpfis.eu/drone-plugins/deploy:latest
     secrets: [ saltapi_url, saltapi_user, saltapi_pass, saltapi_eauth, asda_url, asda_aws_url ]
     location: DC
     drone_repo_name: digit-platform-dc-test
