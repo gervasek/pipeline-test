@@ -13,7 +13,24 @@ workspace:
   path: toolkit
   
 pipeline:
-  test-20-sec:
-    image: ubuntu
-    commands:
-      - for i in $(seq 1 20);do echo "$i";sleep 1;done
+  test-dc-database-operations:
+    image: fpfis/drone-plugin-deploy
+    secrets:
+      - source: ${SITE_SALTAPI_URL}
+        target: saltapi_url
+      - source: ${SITE_SALTAPI_USER}
+        target: saltapi_user
+      - source: ${SITE_SALTAPI_PASS}
+        target: saltapi_pass
+      - source: saltapi_eauth
+        target: saltapi_eauth
+      - source: asda_url
+        target: asda_url
+      - source: asda_aws_url
+        target: asda_aws_url
+    location: DC
+    drone_repo_name: digit-platform-dc-test
+    action: db_refresh
+    pull: true
+    environment:
+      - DRONE_DEPLOY_TO=acc
