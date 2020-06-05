@@ -33,6 +33,11 @@ pipeline:
   publish-docker-to-gitlab:
     group: test
     image: plugins/docker
+    secrets: 
+      - source: GITLAB_USER
+        target: DOCKER_USERNAME
+      - source: GITLAB_PASS
+        target: DOCKER_PASSWORD
     repo: registry.fpfis.eu/gervasek/test-pipeline
     tags:
       - drone-${DRONE_COMMIT_SHA}
