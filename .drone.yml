@@ -31,6 +31,7 @@ pipeline:
       - ls -la
 
   publish-docker-to-gitlab:
+    group: test
     image: plugins/docker
     repo: registry.fpfis.eu/gervasek/test-pipeline
     tags:
