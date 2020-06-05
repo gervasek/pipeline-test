@@ -35,6 +35,6 @@ pipeline:
     image: plugins/docker
     repo: registry.fpfis.eu/gervasek/test-pipeline
     tags:
-      - drone-$DRONE_COMMIT_SHA
+      - drone-${DRONE_COMMIT_SHA}
     registry: registry.fpfis.eu
     dockerfile: Dockerfile
