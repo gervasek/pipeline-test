@@ -13,7 +13,7 @@ workspace:
   path: toolkit
   
 pipeline:
-  ttest-docker-gilabs-access:
+  test-docker-gilabs-access:
     group: test
     image: registry.fpfis.eu/drone-plugins/deploy:latest
     secrets: [ saltapi_url, saltapi_user, saltapi_pass, saltapi_eauth, asda_url, asda_aws_url ]
@@ -27,5 +27,5 @@ pipeline:
   test-docker-hub-access:
     group: test
     image: gervase/test:first
-    command: 
+    commands: 
       - ls -la
