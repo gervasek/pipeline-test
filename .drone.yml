@@ -20,8 +20,17 @@ pipeline:
       - for i in $(seq 1 20);do echo "$i";sleep 1;done
 
   test-koin:
-    image: fpfis/httpd-php-dev
+    image: fpfis/httpd-php-dev:$PHP_VERSION
     group: koin
+    secrets: [ PHP_VERSION ]    
+    commands:
+      - php --version
+      - echo ${KOIN}
+      
+  test-koin2:
+    image: fpfis/httpd-php-dev:${PHP_VERSION}
+    group: koin
+    secrets: [ PHP_VERSION ]    
     commands:
       - php --version
       - echo ${KOIN}
