@@ -24,4 +24,4 @@ pipeline:
     group: koin
     commands:
       - php --version
-      - echo $KOIN
+      - echo $${KOIN}
