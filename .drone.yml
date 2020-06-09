@@ -26,6 +26,7 @@ pipeline:
     commands:
       - php --version
       - echo ${KOIN}
+      - echo ${KOINKOIN}
       
   test-koin2:
     image: fpfis/httpd-php-dev
@@ -33,4 +34,5 @@ pipeline:
     secrets: [ PHP_VERSION ]    
     commands:
       - php --version
-      - echo ${KOIN}
+      - echo $${KOIN}
+      - echo $${KOINKOIN}
