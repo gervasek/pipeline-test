@@ -13,6 +13,11 @@ workspace:
   path: toolkit
   
 pipeline:
+  test-01:
+    image: ubuntu
+    commands:
+      - env
+      
   test-20-sec:
     image: ubuntu
     commands:
