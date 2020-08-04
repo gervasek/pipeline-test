@@ -25,6 +25,7 @@ pipeline:
   test-01:
     secrets: [ secret1 ]
     image: ubuntu
+    koinkoin: True
     commands:
       - env
       
