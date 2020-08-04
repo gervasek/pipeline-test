@@ -23,6 +23,7 @@ workspace:
   
 pipeline:
   test-01:
+    secrets: [ secret1 ]
     image: ubuntu
     commands:
       - env
