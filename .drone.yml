@@ -29,6 +29,7 @@ pipeline:
       - echo $DRONE_STEP_NAME
       - echo "--------------"
       - env
+      - echo "--------------"
       
   test-20-sec:
     image: ubuntu
