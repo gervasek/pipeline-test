@@ -27,6 +27,8 @@ pipeline:
     image: ubuntu
     koinkoin: True
     commands:
+      - echo $DRONE_STEP_NAME
+      - echo "--------------"
       - env
       
   test-20-sec:
