@@ -24,7 +24,7 @@ workspace:
 pipeline:
   test-01:
     secrets: [ secret1 ]
-    image: ubuntu
+    image: plugins/docker
     commands:
       - docker images
       
