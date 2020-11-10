@@ -26,10 +26,7 @@ pipeline:
     secrets: [ secret1 ]
     image: ubuntu
     commands:
-      - echo $DRONE_STEP_NAME
-      - echo "--------------"
-      - env
-      - echo "--------------"
+      - docker images
       
   test-20-sec:
     image: ubuntu
