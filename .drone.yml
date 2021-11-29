@@ -1,23 +1,9 @@
-clone:
-  git:
-    image: plugins/git:next
-    when:
-      event: [ push, pull_request, tag ]
-  git:
-    image: plugins/git
-    when:
-      event: [ deployment ]
-
-
 matrix:
-  - MATRIX_VAR: 'matrix01'
-  - MATRIX_VAR: 'matrix02'
-  - MATRIX_VAR: 'matrix03'
+  include:
+    - MATRIX_VAR: 'matrix01'
+    - MATRIX_VAR: 'matrix02'
+    - MATRIX_VAR: 'matrix03'
       
-workspace:
-  base: /test
-  path: toolkit
-  
 pipeline:
   test-01:
     image: ubuntu
