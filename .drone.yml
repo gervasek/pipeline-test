@@ -1,12 +1,5 @@
-matrix:
-  include:
-    - MATRIX_VAR: 'matrix01'
-    - MATRIX_VAR: 'matrix02'
-    - MATRIX_VAR: 'matrix03'
-      
 pipeline:
   test-01:
     image: ubuntu
     commands:
-      - echo $MATRIX_VAR
       - for i in $(seq 1 3600);do echo "$i";sleep 1;done
