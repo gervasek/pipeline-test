@@ -10,12 +10,9 @@ clone:
 
 
 matrix:
-  BUILD_INFORMATION_MATRIX:
-    - 'matrix01'
-  HOUSING_DESTINATION_MATRIX:
-    - 'matrix02'
-  DEPLOY_PLUGIN_MATRIX:
-    - 'matrix03'
+  - MATRIX_VAR: 'matrix01'
+  - MATRIX_VAR: 'matrix02'
+  - MATRIX_VAR: 'matrix03'
       
 workspace:
   base: /test
@@ -23,12 +20,7 @@ workspace:
   
 pipeline:
   test-01:
-    secrets: [ secret1 ]
-    image: plugins/docker
-    commands:
-      - docker images
-      
-  test-20-sec:
     image: ubuntu
     commands:
-      - for i in $(seq 1 20);do echo "$i";sleep 1;done
+      - echo $MATRIX_VAR
+      - for i in $(seq 1 3600);do echo "$i";sleep 1;done
