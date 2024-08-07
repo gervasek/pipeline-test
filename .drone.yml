@@ -22,10 +22,9 @@ workspace:
   
 pipeline:
   test-01:
-    secrets: [ secret1 ]
-    image: plugins/docker
+    image: ubuntu
     commands:
-      - docker images
+      - echo "Hello world"
       
   test-20-sec:
     image: ubuntu
