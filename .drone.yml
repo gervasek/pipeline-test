@@ -9,4 +9,4 @@ pipeline:
     image: ubuntu
     commands:
       - echo $MATRIX_VAR
-      - for i in $(seq 1 3600);do echo "$i";sleep 1;done
+      - for i in $(seq 1 20);do echo "$i";sleep 1;done
