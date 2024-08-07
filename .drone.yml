@@ -8,7 +8,6 @@ clone:
     when:
       event: [ deployment ]
 
-
 matrix:
   BUILD_INFORMATION_MATRIX:
     - 'matrix01'
