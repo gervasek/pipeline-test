@@ -10,7 +10,7 @@ clone:
 
 pipeline:
   test:
-    image: registry.fpfis.eu/drone-plugins/docker
+    image: git.fpfis.tech.ec.europa.eu/dependency-proxy/dependency_proxy/containers/plugins/docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
@@ -23,7 +23,7 @@ pipeline:
       - DOCKER_BUILDKIT=1
 
   publish-base:
-    image: registry.fpfis.eu/drone-plugins/docker
+    image: git.fpfis.tech.ec.europa.eu/dependency-proxy/dependency_proxy/containers/plugins/docker
     privileged: true
     tags:
       - trololol
@@ -31,7 +31,6 @@ pipeline:
     dockerfile: Dockerfile
     debug: true
     environment:
-      - DOCUMENT_ROOT=/test/toolkit
       - DOCKER_BUILDKIT=1
 
 
