@@ -23,7 +23,7 @@ pipeline:
       - DOCKER_BUILDKIT=1
 
   test2:
-    image: git.fpfis.tech.ec.europa.eu/dependency-proxy/dependency_proxy/containers/plugins/docker
+    image: git.fpfis.tech.ec.europa.eu/dependency-proxy/dependency_proxy/containers/plugins/docker:20.18.4
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
