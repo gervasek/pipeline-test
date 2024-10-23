@@ -18,6 +18,9 @@ pipeline:
       - docker --version
       - docker -H unix:///var/run/docker.sock version
       - docker build .
+    environment:
+      - DOCUMENT_ROOT=/test/toolkit
+      - DOCKER_BUILDKIT=1
 
   publish-base:
     image: registry.fpfis.eu/drone-plugins/docker
@@ -27,6 +30,9 @@ pipeline:
     registry: registry.fpfis.eu
     dockerfile: Dockerfile
     debug: true
+    environment:
+      - DOCUMENT_ROOT=/test/toolkit
+      - DOCKER_BUILDKIT=1
 
 
 
