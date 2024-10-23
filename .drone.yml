@@ -9,6 +9,12 @@ clone:
       event: [ deployment ]
 
 pipeline:
+  test:
+    image: registry.fpfis.eu/drone-plugins/docker
+    commands:
+      - echo "hello"
+      - docker --version
+
   publish-base:
     image: registry.fpfis.eu/drone-plugins/docker
     privileged: true
