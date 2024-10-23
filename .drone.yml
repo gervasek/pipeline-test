@@ -17,6 +17,7 @@ pipeline:
       - echo "hello"
       - docker --version
       - docker -H unix:///var/run/docker.sock version
+      - docker build .
 
   publish-base:
     image: registry.fpfis.eu/drone-plugins/docker
