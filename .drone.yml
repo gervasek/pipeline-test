@@ -7,26 +7,13 @@ clone:
     image: plugins/git
     when:
       event: [ deployment ]
-
-matrix:
-  BUILD_INFORMATION_MATRIX:
-    - 'matrix01'
-  HOUSING_DESTINATION_MATRIX:
-    - 'matrix02'
-  DEPLOY_PLUGIN_MATRIX:
-    - 'matrix03'
-      
-workspace:
-  base: /test
-  path: toolkit
-  
 pipeline:
-  test-01:
-    image: ubuntu
-    commands:
-      - echo "Hello world"
-      
-  test-20-sec:
-    image: ubuntu
-    commands:
-      - for i in $(seq 1 20);do echo "$i";sleep 1;done
+  publish-base:
+    image: registry.fpfis.eu/drone-plugins/docker
+    privileged: true
+    tags:
+      - trololol
+    registry: registry.fpfis.eu
+    dockerfile: Dockerfile
+    debug: true
+
