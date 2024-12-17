@@ -25,16 +25,15 @@ pipeline:
       - /cache/${DRONE_REPO_NAME}:/cache
     environment: *env
     commands:
-      - /scripts/run.sh echo "Container ready"
       - composer self-update --${COMPOSER_VERSION=2}
       - composer install --ansi --no-progress --ignore-platform-reqs
       - echo "##### SERVICE web #####"
-      - curl -s http://web:8080/imap-status.php
+      - curl http://web:8080/imap-status.php
       - echo "##### JOB project-install #####"
       - php imap-status.php
       - ./vendor/bin/run toolkit:install-dependencies
       - echo "##### SERVICE web #####"
-      - curl -s http://web:8080/imap-status.php
+      - curl http://web:8080/imap-status.php
       - echo "##### JOB project-install #####"
       - php imap-status.php
 
@@ -45,7 +44,7 @@ pipeline:
     environment: *env
     commands:
       - echo "##### SERVICE web #####"
-      - curl -s http://web:8080/imap-status.php
+      - curl http://web:8080/imap-status.php
       - echo "##### JOB test1 #####"
       - php imap-status.php
 
