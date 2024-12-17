@@ -8,43 +8,36 @@ clone:
     when:
       event: [ deployment ]
 
+services:
+  web:
+    image: registry.fpfis.eu/fpfis/httpd-php:8.4-ci
+    environment: &env
+      - DOCUMENT_ROOT=/test/toolkit
+
 pipeline:
+  project-install:
+    image: registry.fpfis.eu/fpfis/httpd-php:8.4-ci
+    volumes:
+      - /cache/${DRONE_REPO_NAME}:/cache
+    environment: *env
+    commands:
+      - /scripts/run.sh echo "Container ready"
+      - composer self-update --${COMPOSER_VERSION=2}
+      - composer install --ansi --no-progress --ignore-platform-reqs
+      - curl http://web:8080/imap-status.php
+      - php imap-status.php
+      - ./vendor/bin/run toolkit:install-dependencies
+      - curl http://web:8080/imap-status.php
+      - php imap-status.php
+
   test1:
-    image: registry.fpfis.eu/drone-plugins/docker
+    image: registry.fpfis.eu/fpfis/httpd-php:8.4-ci
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /cache/${DRONE_REPO_NAME}:/cache
+    environment: *env
     commands:
-      - echo "hello"
-      - docker --version
-      - docker -H unix:///var/run/docker.sock version
-      - docker build .
-    environment:
-      - DOCUMENT_ROOT=/test/toolkit
-      - DOCKER_BUILDKIT=1
-
-  test2:
-    image: git.fpfis.tech.ec.europa.eu/dependency-proxy/dependency_proxy/containers/plugins/docker:20.16
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - echo "hello"
-      - docker --version
-      - docker -H unix:///var/run/docker.sock version
-      - docker build .
-    environment:
-      - DOCUMENT_ROOT=/test/toolkit
-      - DOCKER_BUILDKIT=1
-
-  publish-base:
-    image: git.fpfis.tech.ec.europa.eu/dependency-proxy/dependency_proxy/containers/plugins/docker
-    privileged: true
-    tags:
-      - trololol
-    registry: registry.fpfis.eu
-    dockerfile: Dockerfile
-    debug: true
-    environment:
-      - DOCKER_BUILDKIT=1
+      - curl http://web:8080/imap-status.php
+      - php imap-status.php
 
 
 
