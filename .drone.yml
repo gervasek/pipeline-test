@@ -14,6 +14,10 @@ services:
     environment: &env
       - DOCUMENT_ROOT=/test/toolkit
 
+workspace:
+  base: /test
+  path: toolkit
+
 pipeline:
   project-install:
     image: registry.fpfis.eu/fpfis/httpd-php:8.3-ci
