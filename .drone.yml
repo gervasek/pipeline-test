@@ -10,13 +10,13 @@ clone:
 
 services:
   web:
-    image: registry.fpfis.eu/fpfis/httpd-php:8.4-ci
+    image: registry.fpfis.eu/fpfis/httpd-php:8.3-ci
     environment: &env
       - DOCUMENT_ROOT=/test/toolkit
 
 pipeline:
   project-install:
-    image: registry.fpfis.eu/fpfis/httpd-php:8.4-ci
+    image: registry.fpfis.eu/fpfis/httpd-php:8.3-ci
     volumes:
       - /cache/${DRONE_REPO_NAME}:/cache
     environment: *env
@@ -31,7 +31,7 @@ pipeline:
       - php imap-status.php
 
   test1:
-    image: registry.fpfis.eu/fpfis/httpd-php:8.4-ci
+    image: registry.fpfis.eu/fpfis/httpd-php:8.3-ci
     volumes:
       - /cache/${DRONE_REPO_NAME}:/cache
     environment: *env
