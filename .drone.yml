@@ -28,10 +28,14 @@ pipeline:
       - /scripts/run.sh echo "Container ready"
       - composer self-update --${COMPOSER_VERSION=2}
       - composer install --ansi --no-progress --ignore-platform-reqs
-      - curl http://web:8080/imap-status.php
+      - echo "##### SERVICE web #####"
+      - curl -s http://web:8080/imap-status.php
+      - echo "##### JOB project-install #####"
       - php imap-status.php
       - ./vendor/bin/run toolkit:install-dependencies
-      - curl http://web:8080/imap-status.php
+      - echo "##### SERVICE web #####"
+      - curl -s http://web:8080/imap-status.php
+      - echo "##### JOB project-install #####"
       - php imap-status.php
 
   test1:
@@ -40,7 +44,9 @@ pipeline:
       - /cache/${DRONE_REPO_NAME}:/cache
     environment: *env
     commands:
-      - curl http://web:8080/imap-status.php
+      - echo "##### SERVICE web #####"
+      - curl -s http://web:8080/imap-status.php
+      - echo "##### JOB test1 #####"
       - php imap-status.php
 
 
